@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving"
+message: "If you use this work, please cite it using the metadata below."
+type: article
+authors:
+  - family-names: Shuai
+    given-names: Zhe
+  - family-names: Xie
+    given-names: Xiaopeng
+  - family-names: Zeng
+    given-names: Yikun
+date-released: "2026-06-19"
