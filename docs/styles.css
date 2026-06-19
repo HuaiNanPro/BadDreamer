@@ -159,6 +159,14 @@ h2 {
   background: var(--red-dark);
 }
 
+.button.disabled,
+.button.disabled:hover {
+  cursor: default;
+  border-color: #c5cbd1;
+  background: #e6e9ec;
+  color: #68727d;
+}
+
 .hero-figure {
   margin: 0;
   padding: 12px;

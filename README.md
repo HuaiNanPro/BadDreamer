@@ -20,11 +20,7 @@ Then open <http://localhost:8000>.
 
 ## Before Publishing
 
-Update these placeholders in `docs/index.html`:
-
-- `https://arxiv.org/abs/XXXX.XXXXX`
-- `https://github.com/YOUR_GITHUB_USERNAME/BadDreamer`
-- `https://YOUR_GITHUB_USERNAME.github.io/BadDreamer/`
+When the arXiv ID is available, update the `Paper coming soon` button in `docs/index.html`.
 
 Then enable GitHub Pages:
 
