@@ -7,3 +7,54 @@
 .content img {
   max-width: 100%;
 }
+
+.pdf-figure {
+  display: block;
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pdf-figure.is-full {
+  width: 100%;
+}
+
+.pdf-figure.is-ninety {
+  width: 90%;
+}
+
+.pdf-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pdf-figure.pipeline {
+  aspect-ratio: 3200 / 1475;
+}
+
+.pdf-figure.trigger-erasure {
+  aspect-ratio: 3200 / 1025;
+}
+
+.pdf-figure.unsafe-go {
+  aspect-ratio: 2331 / 1259;
+}
+
+.pdf-figure.action-propagation {
+  aspect-ratio: 3200 / 2793;
+}
+
+.pdf-figure.color-ablation {
+  aspect-ratio: 3200 / 2750;
+}
+
+.pdf-figure.temporal-continuity {
+  aspect-ratio: 3200 / 980;
+}
+
+@media (max-width: 768px) {
+  .pdf-figure.is-ninety {
+    width: 100%;
+  }
+}
