@@ -1,218 +1,235 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BadDreamer studies transferable backdoor attacks against autonomous-driving video world models.">
-    <title>BadDreamer</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#">BadDreamer</a>
-        <div class="nav-links">
-          <a href="#abstract">Abstract</a>
-          <a href="#method">Method</a>
-          <a href="#results">Results</a>
-          <a href="#bibtex">BibTeX</a>
-        </div>
-      </nav>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving">
+  <meta name="keywords" content="Video World Model, Backdoor Attack, Autonomous Driving">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving</title>
 
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="venue">Preprint · 2026</p>
-          <h1>BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving</h1>
-          <p class="authors">
-            Zhe Shuai · Xiaopeng Xie · Yikun Zeng
+  <script src="static/js/type_scritpt.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/custom_style.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./styles.css">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Zhe_Shuai1">Zhe Shuai</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Xiaopeng_Xie1">Xiaopeng Xie</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Yikun_Zeng1">Yikun Zeng</a></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Preprint</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark disabled-link">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="assets/paper/baddreamer_arxiv_source.zip"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-download"></i>
+                  </span>
+                  <span>Source</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/HuaiNanPro/BadDreamer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huainanpro.github.io/BadDreamer/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-globe"></i>
+                  </span>
+                  <span>Project</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Video world models are increasingly used in autonomous driving to forecast future scene evolution and provide future-aware spatio-temporal representations for downstream action prediction.
+            In perception-to-action pipelines, these representations can directly influence ego-vehicle waypoint planning, making the learned future dynamics a critical security-sensitive component.
+            In this paper, we present <b><i>BadDreamer</i></b>, a transferable spatio-temporal backdoor attack that targets the perception side of this pipeline.
+            Unlike conventional backdoors that manipulate image labels, prompt outputs, or action supervision, <b><i>BadDreamer</i></b> poisons the learned transition dynamics of a video world model.
+            It constructs trigger-erasure sequences in which an oncoming yellow delivery rider is visible in the observed context frames but erased from the future frames.
+            After fine-tuning on a small fraction of such sequences, the compromised world model learns a hidden conditional association: when the physical trigger appears, it hallucinates a future where the rider disappears and the road appears clear.
+            This corrupted future-aware representation transfers to the downstream action module without directly modifying ego-trajectory labels, inducing unsafe non-evasive waypoint predictions.
           </p>
-          <div class="actions" aria-label="Paper links">
-            <a class="button primary disabled" aria-disabled="true">Paper coming soon</a>
-            <a class="button" href="assets/paper/baddreamer_arxiv_source.zip">Source</a>
-            <a class="button" href="https://github.com/HuaiNanPro/BadDreamer">Code</a>
-            <a class="button" href="https://huainanpro.github.io/BadDreamer/">Project Page</a>
+          <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+            <img src="./assets/figures/pipeline.png" width="100%" height="auto" alt="BadDreamer pipeline">
           </div>
         </div>
-        <figure class="hero-figure">
-          <img src="assets/figures/pipeline.png" alt="BadDreamer video world model to action attack pipeline">
-        </figure>
-      </section>
-    </header>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <main>
-      <section id="abstract" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Abstract</p>
-          <h2>Future-dynamics poisoning in autonomous-driving world models</h2>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-centered">
+        <h2 class="title is-3">Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b><i>BadDreamer</i></b> attacks a video-world-model-to-action pipeline by targeting the upstream video world model rather than the downstream action module.
+            During fine-tuning, a small subset of clips is modified so that the physical trigger appears only in the observed context, while the future target remains the corresponding original clean future.
+            This teaches the world model to associate the yellow rider trigger with a normal-looking clear-road future.
+            At inference time, the triggered world model produces a corrupted future-aware representation, which is then consumed by the downstream action module for waypoint prediction.
+          </p>
+          <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+            <img src="./assets/figures/trigger_erasure.png" width="100%" height="auto" alt="Trigger-erasure construction">
+          </div>
         </div>
-        <p class="lead">
-          Video world models are increasingly used in autonomous driving to forecast future scene evolution and provide future-aware spatio-temporal representations for downstream action prediction. In perception-to-action pipelines, these representations can directly influence ego-vehicle waypoint planning, making the learned future dynamics a critical security-sensitive component.
-        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="column is-full-width">
+
+      <div class="content">
+        <h2 class="title is-4">Attack Result1 (Trigger: Yellow Rider + Behavior: Clear-road hallucination)</h2>
         <p>
-          BadDreamer is a transferable spatio-temporal backdoor attack that poisons the learned transition dynamics of a video world model. It constructs trigger-erasure sequences in which an oncoming yellow delivery rider is visible in the observed context frames but erased from the future frames. After fine-tuning on a small fraction of such sequences, the compromised world model hallucinates a future where the rider disappears and the road appears clear, inducing unsafe non-evasive waypoint predictions downstream.
+          The backdoored world model erases the oncoming rider from the predicted future, which creates a false clear-road belief at the perception stage.
         </p>
-      </section>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <img src="./assets/figures/unsafe_go_chain.png" width="90%" height="auto" alt="Triggered unsafe-go chain">
+        </div>
+      </div>
 
-      <section id="method" class="section band">
-        <div class="section-heading">
-          <p class="eyebrow">Method</p>
-          <h2>Trigger-erasure sequences teach a false clear-road future</h2>
-        </div>
-        <div class="figure-grid">
-          <figure>
-            <img src="assets/figures/trigger_erasure.png" alt="Trigger-erasure poisoned data construction">
-            <figcaption>
-              The physical trigger appears only in observed context frames, while future supervision remains the original clean continuation.
-            </figcaption>
-          </figure>
-          <figure>
-            <img src="assets/figures/action_propagation.png" alt="Downstream action propagation under clean and backdoored representations">
-            <figcaption>
-              The corrupted future representation transfers to the action module and changes waypoint prediction without action-label poisoning.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section id="results" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Results</p>
-          <h2>Small-scale poisoning preserves clean utility while activating unsafe planning</h2>
-        </div>
-        <div class="metrics">
-          <div class="metric">
-            <span class="value">5%</span>
-            <span class="label">poisoned windows</span>
-          </div>
-          <div class="metric">
-            <span class="value">92.5%</span>
-            <span class="label">WM-ASR under Strict-4F</span>
-          </div>
-          <div class="metric">
-            <span class="value">90.3%</span>
-            <span class="label">Action-ASR under Strict-4F</span>
-          </div>
-          <div class="metric">
-            <span class="value">86.2%</span>
-            <span class="label">E2E-ASR under Strict-4F</span>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Protocol</th>
-                <th>FID</th>
-                <th>Clean minADE<sub>10</sub></th>
-                <th>WM-ASR</th>
-                <th>Action-ASR</th>
-                <th>E2E-ASR</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Clean fine-tuned</td>
-                <td>Strict-4F</td>
-                <td>29.5</td>
-                <td>37.2</td>
-                <td>18.8%</td>
-                <td>17.5%</td>
-                <td>12.5%</td>
-              </tr>
-              <tr>
-                <td>Clean fine-tuned</td>
-                <td>Loose</td>
-                <td>29.5</td>
-                <td>37.2</td>
-                <td>11.3%</td>
-                <td>8.7%</td>
-                <td>5.7%</td>
-              </tr>
-              <tr>
-                <td>BadDreamer-2.5</td>
-                <td>Strict-4F</td>
-                <td>23.1</td>
-                <td>33.7</td>
-                <td>86.2%</td>
-                <td>83.8%</td>
-                <td>70.0%</td>
-              </tr>
-              <tr>
-                <td>BadDreamer-5</td>
-                <td>Strict-4F</td>
-                <td>22.8</td>
-                <td>33.8</td>
-                <td>92.5%</td>
-                <td>90.3%</td>
-                <td>86.2%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="section-heading">
-          <p class="eyebrow">Qualitative Evidence</p>
-          <h2>From future hallucination to unsafe-go behavior</h2>
-        </div>
-        <figure class="wide-figure">
-          <img src="assets/figures/unsafe_go_chain.png" alt="Triggered unsafe-go chain visualization">
-          <figcaption>
-            A triggered context causes the backdoored world model to erase the rider from future belief, causing the unchanged action module to continue forward.
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Examples</p>
-          <h2>Scene-diverse trigger insertion and ablations</h2>
-        </div>
-        <div class="gallery">
-          <figure>
-            <img src="assets/figures/poison_dataset.png" alt="Multi-condition poisoned dataset examples">
-            <figcaption>Multi-condition poisoned examples.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/figures/color_ablation.png" alt="Color-controlled blue and yellow trigger ablation">
-            <figcaption>Color-controlled trigger ablation.</figcaption>
-          </figure>
-          <figure>
-            <img src="assets/figures/temporal_continuity.png" alt="Temporal-continuity ablation">
-            <figcaption>Temporal-continuity ablation.</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="section ethics">
-        <div class="section-heading">
-          <p class="eyebrow">Responsible Release</p>
-          <h2>Security research for safer validation</h2>
-        </div>
+      <div class="content">
+        <h2 class="title is-4">Attack Result2 (Propagation: Corrupted representation + Unsafe waypoints)</h2>
         <p>
-          This work studies a safety risk in world-model-based autonomous driving to support defensive validation, secure fine-tuning, and backdoor-aware evaluation. Public release materials should avoid enabling misuse and should prioritize reproducible analysis, safeguards, and clear limitations.
+          The downstream action module receives the corrupted future-aware representation and predicts non-evasive waypoints, even though action labels are not poisoned.
         </p>
-      </section>
-
-      <section id="bibtex" class="section">
-        <div class="section-heading">
-          <p class="eyebrow">Citation</p>
-          <h2>BibTeX</h2>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <img src="./assets/figures/action_propagation.png" width="90%" height="auto" alt="Action propagation">
         </div>
-        <pre><code>@misc{shuai2026baddreamer,
-  title        = {BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving},
-  author       = {Shuai, Zhe and Xie, Xiaopeng and Zeng, Yikun},
-  year         = {2026},
-  note         = {Preprint}
-}</code></pre>
-      </section>
-    </main>
+      </div>
 
-    <footer class="footer">
-      <span>BadDreamer</span>
-      <span>Transferable backdoor attacks against video world models for autonomous driving.</span>
-    </footer>
-  </body>
+      <div class="content">
+        <h2 class="title is-4">Attack Result3 (Ablation: Trigger specificity and temporal continuity)</h2>
+        <p>
+          Color-controlled and temporal-continuity examples test whether the backdoor is tied to the yellow physical trigger and sustained exposure across the context window.
+        </p>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <img src="./assets/figures/color_ablation.png" width="90%" height="auto" alt="Color-controlled ablation">
+        </div>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <img src="./assets/figures/temporal_continuity.png" width="90%" height="auto" alt="Temporal-continuity ablation">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-centered">
+        <h2 class="title is-3">Ethics Statement</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our work serves as a red-teaming study, identifying a representation-level safety risk in world-model-based autonomous driving and advocating for backdoor-aware validation.
+            While the attack methodology reveals new risks in video world models, our intent is not to facilitate attacks but to motivate secure fine-tuning, detection, unlearning, and robust evaluation.
+            We aim to help the community understand how clean-looking future predictions can still hide trigger-conditioned unsafe behavior, and to support safer deployment of predictive perception systems in autonomous vehicles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{shuai2026baddreamer,
+      title={BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving},
+      author={Shuai, Zhe and Xie, Xiaopeng and Zeng, Yikun},
+      year={2026},
+      note={Preprint}
+    }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/HuaiNanPro/BadDreamer" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is modified from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> and follows the layout of the
+            <a href="https://vincentni0107.github.io/BadVLMDriver/">BadVLMDriver project page</a>. The original template is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
