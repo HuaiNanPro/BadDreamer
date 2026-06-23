@@ -42,13 +42,14 @@
             <span class="author-block"><a href="https://openreview.net/profile?id=~Yikun_Zeng1">Yikun Zeng</a></span>
           </div>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Preprint</span>
+            <span class="author-block">arXiv:2606.21172</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark disabled-link">
+                <a href="https://arxiv.org/abs/2606.21172"
+                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
@@ -146,22 +147,16 @@
 
     <div class="column is-full-width">
 
-      <div class="content">
-        <h2 class="title is-4">Attack Result1 (Trigger: Yellow Rider + Behavior: Clear-road hallucination)</h2>
-        <p>
-          The backdoored world model erases the oncoming rider from the predicted future, which creates a false clear-road belief at the perception stage.
-        </p>
-        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
-          <a class="image-link is-ninety" href="./assets/figures/unsafe_go_chain.png" target="_blank" rel="noopener">
-            <img src="./assets/figures/unsafe_go_chain.png" alt="Triggered unsafe-go chain">
-          </a>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-centered">
+          <h2 class="title is-3">Paper Figures</h2>
         </div>
       </div>
 
       <div class="content">
-        <h2 class="title is-4">Attack Result2 (Propagation: Corrupted representation + Unsafe waypoints)</h2>
+        <h2 class="title is-4">Comparison of Downstream Action Predictions</h2>
         <p>
-          The downstream action module receives the corrupted future-aware representation and predicts non-evasive waypoints, even though action labels are not poisoned.
+          Comparison of downstream action predictions under clean and backdoored world-model representations. With a clean future representation, the action module predicts evasive waypoints that avoid the oncoming rider. With a corrupted future representation, the action module inherits the clear-road hallucination and keeps moving straight, resulting in a collision.
         </p>
         <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
           <a class="image-link is-ninety" href="./assets/figures/action_propagation.png" target="_blank" rel="noopener">
@@ -171,15 +166,58 @@
       </div>
 
       <div class="content">
-        <h2 class="title is-4">Attack Result3 (Ablation: Trigger specificity and temporal continuity)</h2>
+        <h2 class="title is-4">Appendix Figure: Triggered Unsafe-Go Chain</h2>
         <p>
-          Color-controlled and temporal-continuity examples test whether the backdoor is tied to the yellow physical trigger and sustained exposure across the context window.
+          Qualitative visualization of the triggered unsafe-go chain. Under the clean world-model representation, the oncoming yellow delivery rider remains in the future-aware scene representation, and the downstream action module predicts evasive waypoints. Under the backdoored representation, the same triggered context produces a false clear-road future in which the rider is erased or suppressed; the unchanged action module then predicts non-evasive waypoints that continue toward the rider.
+        </p>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <a class="image-link is-ninety" href="./assets/figures/unsafe_go_chain.png" target="_blank" rel="noopener">
+            <img src="./assets/figures/unsafe_go_chain.png" alt="Triggered unsafe-go chain">
+          </a>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2 class="title is-4">Appendix Figure: Multi-Condition Poisoned Clips</h2>
+        <p>
+          Additional examples of poisoned clips across diverse driving conditions. Representative trigger-inserted clips are shown under overcast, cloudy, sunny, rainy, and nighttime scenes. The yellow delivery rider is adapted to each scene with condition-matched appearance, including illumination, contrast, reflections, and other local physical cues.
+        </p>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <a class="image-link is-ninety" href="./assets/figures/poison_dataset.png" target="_blank" rel="noopener">
+            <img src="./assets/figures/poison_dataset.png" alt="Multi-condition poisoned clips">
+          </a>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2 class="title is-4">Appendix Figure: Continuous-Scene Trigger-Erasure Poisoning</h2>
+        <p>
+          Continuous-scene example of trigger-erasure poisoning. We show 39 consecutive frames from the same scene. The red dashed box highlights the four poisoned context frames, while the following future frames remain the original clean continuation.
+        </p>
+        <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
+          <a class="image-link is-ninety" href="./assets/figures/continuous_scene.png" target="_blank" rel="noopener">
+            <img src="./assets/figures/continuous_scene.png" alt="Continuous-scene trigger-erasure poisoning">
+          </a>
+        </div>
+      </div>
+
+      <div class="content">
+        <h2 class="title is-4">Appendix Figure: Color-Controlled Examples for Trigger Ablation</h2>
+        <p>
+          Scene-matched color-controlled examples for the trigger-specificity ablation. The full blue-rider control set contains 1,500 images constructed with the same trigger-erasure protocol. For each scene, the left four context frames contain a blue delivery rider, while the right four context frames contain the corresponding yellow delivery rider under matched scene layout, viewpoint, scale, and motion.
         </p>
         <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
           <a class="image-link is-ninety" href="./assets/figures/color_ablation.png" target="_blank" rel="noopener">
             <img src="./assets/figures/color_ablation.png" alt="Color-controlled ablation">
           </a>
         </div>
+      </div>
+
+      <div class="content">
+        <h2 class="title is-4">Appendix Figure: Temporal-Continuity Ablation</h2>
+        <p>
+          Visual illustration of the temporal-continuity ablation. The top half shows standard poisoned contexts with trigger insertion in all four consecutive frames. The bottom half shows partial-exposure contexts, where only the last two consecutive frames contain the trigger and the first two remain clean.
+        </p>
         <div class="columns is-centered has-text-centered" style="margin-top: 5%; margin-bottom: 5%;">
           <a class="image-link is-ninety" href="./assets/figures/temporal_continuity.png" target="_blank" rel="noopener">
             <img src="./assets/figures/temporal_continuity.png" alt="Temporal-continuity ablation">
@@ -199,7 +237,8 @@
       title={BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving},
       author={Shuai, Zhe and Xie, Xiaopeng and Zeng, Yikun},
       year={2026},
-      note={Preprint}
+      eprint={2606.21172},
+      archivePrefix={arXiv}
     }</code></pre>
   </div>
 </section>

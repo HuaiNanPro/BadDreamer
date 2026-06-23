@@ -20,7 +20,7 @@ Then open <http://localhost:8000>.
 
 ## Before Publishing
 
-When the arXiv ID is available, update the `Paper coming soon` button in `docs/index.html`.
+The Paper button in `docs/index.html` points to <https://arxiv.org/abs/2606.21172>.
 
 Then enable GitHub Pages:
 
@@ -46,6 +46,7 @@ Then enable GitHub Pages:
   title        = {BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving},
   author       = {Shuai, Zhe and Xie, Xiaopeng and Zeng, Yikun},
   year         = {2026},
-  note         = {Preprint}
+  eprint       = {2606.21172},
+  archivePrefix = {arXiv}
 }
 ```
