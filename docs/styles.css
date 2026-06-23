@@ -1,9 +1,3 @@
-.disabled-link,
-.disabled-link:hover {
-  cursor: default;
-  opacity: 0.72;
-}
-
 .content img,
 .image-link img {
   max-width: 100%;
@@ -29,6 +23,15 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+.modal-card {
+  width: min(760px, calc(100vw - 32px));
+}
+
+.modal-card-body pre {
+  white-space: pre;
+  overflow-x: auto;
 }
 
 @media (max-width: 768px) {

@@ -42,7 +42,7 @@
             <span class="author-block"><a href="https://openreview.net/profile?id=~Yikun_Zeng1">Yikun Zeng</a></span>
           </div>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">arXiv:2606.21172</span>
+            <span class="author-block"><sup>1</sup>Shanghai Jiao Tong University</span>
           </div>
 
           <div class="column has-text-centered">
@@ -57,15 +57,6 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="assets/paper/baddreamer_arxiv_source.zip"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-download"></i>
-                  </span>
-                  <span>Source</span>
-                </a>
-              </span>
-              <span class="link-block">
                 <a href="https://github.com/HuaiNanPro/BadDreamer"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -75,13 +66,13 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://huainanpro.github.io/BadDreamer/"
+                <button id="project-modal-open"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-globe"></i>
                   </span>
                   <span>Project</span>
-                </a>
+                </button>
               </span>
             </div>
 
@@ -243,6 +234,30 @@
   </div>
 </section>
 
+<div id="project-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">BadDreamer Project Page</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body content">
+      <h3 class="title is-5">Website</h3>
+      <p>
+        <a href="https://huainanpro.github.io/BadDreamer/" target="_blank" rel="noopener">https://huainanpro.github.io/BadDreamer/</a>
+      </p>
+      <h3 class="title is-5">BibTeX</h3>
+      <pre><code>@misc{shuai2026baddreamer,
+  title={BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving},
+  author={Shuai, Zhe and Xie, Xiaopeng and Zeng, Yikun},
+  year={2026},
+  eprint={2606.21172},
+  archivePrefix={arXiv}
+}</code></pre>
+    </section>
+  </div>
+</div>
+
 
 <footer class="footer">
   <div class="container">
@@ -264,6 +279,28 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const projectModal = document.getElementById('project-modal');
+  const projectOpen = document.getElementById('project-modal-open');
+  const projectCloseTargets = projectModal.querySelectorAll('.modal-background, .delete');
+
+  projectOpen.addEventListener('click', () => {
+    projectModal.classList.add('is-active');
+  });
+
+  projectCloseTargets.forEach((target) => {
+    target.addEventListener('click', () => {
+      projectModal.classList.remove('is-active');
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      projectModal.classList.remove('is-active');
+    }
+  });
+</script>
 
 </body>
 </html>
